@@ -8,10 +8,10 @@ function sayName() {
 }
 
 // вызовите ф-цию sayName так, чтобы в консоль вывелось имя студента
-sayName.apply(student);
+sayName.call(student);
 
 // вызовите ф-цию sayName так, чтобы в консоль вывелось имя 'Bruce' (используйте другой объект)
-sayName.apply({ name: 'Bruce' });
+sayName.call({ name: 'Bruce' });
 
 /* ===> 2 <=== */
 const company = {
@@ -25,7 +25,7 @@ function greeting(firstName, lastName) {
 // вызовите ф-цию greeting так, чтобы в консоль вывелось
 // 'Hello, Bob Marley. Welcome to the Microsoft'
 // используйте объект company
-greeting.apply(company, ['Bob', 'Marley']);
+greeting.call(company, 'Bob', 'Marley');
 
 /* ===> 3 <=== */
 const country = {
@@ -42,7 +42,7 @@ function getPopulation(population) {
 // 43000 передавайте в виде числа
 // используйте объект country
 // результат работы ф-ции getPopulation присвойте в переменную и выведите в консоль
-let message = getPopulation.apply(country, [43000]);
+let message = getPopulation.call(country, 43000);
 console.log(message);
 
 /* ===> 4 <=== */
@@ -66,4 +66,4 @@ const anotherTransaction = {
 // вызовите метод transaction.printTransaction так, чтобы в консоль вывелось
 // '400 USD - buy on NASDAQ'
 // используйте объект anotherTransaction как контекст
-transaction.printTransaction.apply(anotherTransaction);
+transaction.printTransaction.call(anotherTransaction);
