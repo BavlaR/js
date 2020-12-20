@@ -1,25 +1,34 @@
-// input: obj obj
+// input: arr arr
 // output: obj
-const mergeObjectsV1 = (obj1, obj2) => {
-   Object.assign(obj1, obj2);
+const buildObject = (keys, values) => {
+   return keys.reduce((acc, key, i) => {
+      return { ...acc, [key]: values[i] };
+   }, {});
 };
 
-const mergeObjectsV2 = (obj1, obj2) => {
-   Object.assign({}, obj2, obj1);
+const buildObjectWithLoop = (keys, values) => {
+   const res = {};
+
+   for (let index = 0; index < keys.length; index += 1) {
+      const key = keys[index];
+      const value = values[index];
+
+      Object.assign(res, { [key]: value });
+   }
+
+   return res;
 };
 
-console.log(mergeObjectsV2({ name: 'Bob' }, { name: 'Alex', age: 30 }));
+const arr1 = ['name', 'age', 'country'];
+const arr2 = ['Bob', 20, 'Uganda'];
 
-const mergeObjectsV3 = (obj1, obj2) => ({ ...obj1, ...obj2 });
+console.log(buildObject(arr1, arr2));
 
-console.log(mergeObjectsV3({ name: 'Bob' }, { name: 'Alex', age: 30 }));
+const someObj = {
+   name: 'fff',
+   age: 30,
+};
 
-const user = {};
+const arr3 = [arr1, 10, 20];
 
-function addPropertyV1(obj, userId) {
-   obj.id = userId;
-}
-
-function addPropertyV3(obj, userId) {
-   return { ...obj, id: userId };
-}
+console.log(arr3);
