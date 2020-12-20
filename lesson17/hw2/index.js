@@ -3,7 +3,7 @@ const student = {
    name: 'Tom',
 };
 
-export function sayName() {
+function sayName() {
    console.log(this.name);
 }
 
@@ -42,7 +42,8 @@ function getPopulation(population) {
 // 43000 передавайте в виде числа
 // используйте объект country
 // результат работы ф-ции getPopulation присвойте в переменную и выведите в консоль
-getPopulation.call(country, 43000);
+let message = getPopulation.call(country, 43000);
+console.log(message);
 
 /* ===> 4 <=== */
 const transaction = {
