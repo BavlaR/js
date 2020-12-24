@@ -27,11 +27,9 @@ function createLogger() {
    }
 
    function getRecords(messageType) {
-      return messageType === undefined
-         ? memory.sort((prev, next) => next.dateTime - prev.dateTime)
-         : memory
-              .filter(memoryObj => memoryObj.type === messageType)
-              .sort((prev, next) => next.dateTime - prev.dateTime);
+      const sorted = memory.sort((prev, next) => next.dateTime - prev.dateTime);
+
+      return messageType ? sorted : sorted.filter(memoryObj => memoryObj.type === messageType);
    }
 
    return {

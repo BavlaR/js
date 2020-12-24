@@ -80,11 +80,3 @@ const anotherTransaction = {
  * printSpecialTransaction не должна принимать ни одного аргумента
  */
 const printSpecialTransaction = transaction.printTransaction.bind(anotherTransaction);
-
-export {
-   sayStudentName,
-   sayBruceName,
-   specialGreeting,
-   getUkrainePopulation,
-   printSpecialTransaction,
-};
