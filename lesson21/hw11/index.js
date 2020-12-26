@@ -6,7 +6,3 @@ export function squaredNumbers() {
 }
 
 squaredNumbers();
-
-console.log(document.querySelector('.list'));
-
-console.log('5' ** 2);
