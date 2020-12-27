@@ -2,6 +2,6 @@ function getValue(elt) {
    console.log(elt.value);
 }
 
-const getValueHandler = e => getValue(e.target);
+const getValueHandler = () => getValue(document.querySelector('.search__input'));
 
 document.querySelector('.search__btn').addEventListener('click', getValueHandler);
