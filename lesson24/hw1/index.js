@@ -1,8 +1,8 @@
 export function getDiff(startDate, endDate) {
-   let dateDiff = +startDate - +endDate;
+   let dateDiff = startDate - endDate;
 
-   const days = Math.trunc(dateDiff / 8640000);
-   dateDiff -= days * 8640000;
+   const days = Math.trunc(dateDiff / 86400000);
+   dateDiff -= days * 86400000;
 
    const hours = Math.trunc(dateDiff / 360000);
    dateDiff -= hours * 360000;
@@ -13,4 +13,4 @@ export function getDiff(startDate, endDate) {
    return `${days}d ${hours}h ${minutes}m ${Math.trunc(dateDiff / 100)}s`;
 }
 
-console.log(getDiff(new Date(416547984651), new Date(15489789646548)));
+console.log(getDiff(new Date(2016, 1), new Date(2015, 1)));
