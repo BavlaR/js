@@ -2,7 +2,7 @@ export function getDiff(startDate, endDate) {
    let dateDiff = startDate - endDate;
 
    const days = Math.trunc(dateDiff / 86400000);
-   dateDiff -= days * 864000000;
+   dateDiff -= days * 86400000;
 
    const hours = Math.trunc(dateDiff / 3600000);
    dateDiff -= hours * 3600000;
