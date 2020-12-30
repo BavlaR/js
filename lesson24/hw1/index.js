@@ -10,5 +10,7 @@ export function getDiff(startDate, endDate) {
    const minutes = Math.trunc(dateDiff / 60000);
    dateDiff -= minutes * 60000;
 
-   return `${days}d ${hours}h ${minutes}m ${Math.trunc(dateDiff / 1000)}s`;
+   return `${Math.abs(days)}d ${Math.abs(hours)}h ${Math.abs(minutes)}m ${Math.abs(
+      Math.trunc(dateDiff / 1000),
+   )}s`;
 }
