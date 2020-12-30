@@ -12,5 +12,3 @@ export function getDiff(startDate, endDate) {
 
    return `${days}d ${hours}h ${minutes}m ${Math.trunc(dateDiff / 1000)}s`;
 }
-
-console.log(getDiff(new Date(2016, 1), new Date(2015, 1)));
