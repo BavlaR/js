@@ -1,4 +1,4 @@
-function getLocalStorageData() {
+export function getLocalStorageData() {
    return Object.entries(localStorage).reduce(
       (acc, [key, val]) => ({
          ...acc,
@@ -7,5 +7,3 @@ function getLocalStorageData() {
       {},
    );
 }
-
-console.log(getLocalStorageData());
