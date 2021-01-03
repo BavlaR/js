@@ -1,6 +1,11 @@
-export function getLocalStorageData() {
-   return Object.entries(localStorage).reduce((acc, [key, val]) => {
-      acc[key] = JSON.parse(val);
-      return acc;
-   }, {});
+function getLocalStorageData() {
+   return Object.entries(localStorage).reduce(
+      (acc, [key, val]) => ({
+         ...acc,
+         [key]: JSON.parse(val),
+      }),
+      {},
+   );
 }
+
+console.log(getLocalStorageData());
