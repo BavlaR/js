@@ -1,9 +1,14 @@
 export function getLocalStorageData() {
-   return Object.entries(localStorage).reduce(
-      (acc, [key, val]) => ({
+   return Object.entries(localStorage).reduce((acc, [key, value]) => {
+      let newValue;
+      try {
+         newValue = JSON.parse(value);
+      } catch (e) {
+         newValue = value;
+      }
+      return {
          ...acc,
-         [key]: JSON.parse(val),
-      }),
-      {},
-   );
+         [key]: newValue,
+      };
+   }, {});
 }
