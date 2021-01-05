@@ -1,4 +1,4 @@
-function calc(startVal) {
+export function calc(startVal) {
    let res = startVal;
 
    return {
@@ -23,5 +23,3 @@ function calc(startVal) {
       },
    };
 }
-
-console.log(calc(3).add(7).mult(2).div(5).subtract(9).result());
