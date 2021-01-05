@@ -1,6 +1,8 @@
 /* eslint-disable no-use-before-define */
 /* eslint-disable no-param-reassign */
 
+import { setItem, getItem } from './storage';
+
 const tasks = [
    { text: 'Buy milk', done: false },
    { text: 'Pick up Tom from airport', done: false },
@@ -19,7 +21,7 @@ const onCheckClickHandler = e => {
    tasks[+singleCheck].done = !tasks[+singleCheck].done;
 
    unordered.innerHTML = '';
-   createTasks(tasks);
+   renderTasks(tasks);
 };
 
 const onBtnClickHandler = () => {
@@ -31,13 +33,13 @@ const onBtnClickHandler = () => {
 
       taskInput.value = '';
       unordered.innerHTML = '';
-      createTasks(tasks);
+      renderTasks(tasks);
    }
 };
 
 taskBtn.addEventListener('click', onBtnClickHandler);
 
-function createTasks(toDoItems) {
+function renderTasks(toDoItems) {
    const toDoElems = toDoItems
       .map((item, i) => {
          const liElem = document.createElement('li');
@@ -65,4 +67,4 @@ function createTasks(toDoItems) {
    unordered.append(...toDoElems);
 }
 
-createTasks(tasks);
+renderTasks(tasks);
