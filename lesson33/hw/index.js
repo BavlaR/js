@@ -5,7 +5,5 @@ export function getTasksList() {
 }
 
 export function getTaskById(taskId) {
-   return fetch(baseUrl)
-      .then(response => response.json())
-      .then(data => data.find(oneData => oneData.id === taskId));
+   return fetch(`${baseUrl}/${taskId}`).then(response => response.json());
 }
