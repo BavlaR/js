@@ -27,7 +27,11 @@ const createListItem = ({ text, done, id }) => {
    if (done) {
       listItemElem.classList.add('list__item_done');
    }
-   listItemElem.append(checkboxElem, text);
+
+   const deleteBtnElem = document.createElement('button');
+   deleteBtnElem.classList.add('list__item-delete-btn');
+
+   listItemElem.append(checkboxElem, text, deleteBtnElem);
 
    return listItemElem;
 };
