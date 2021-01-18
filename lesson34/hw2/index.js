@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 const baseUrl = 'https://6002aea64f17c800175581fe.mockapi.io/api/v1/users';
 
 const submitBtn = document.querySelector('.submit-button');
@@ -8,43 +7,41 @@ const textElem = document.querySelector('#name');
 const passwordElem = document.querySelector('#password');
 const errorElem = document.querySelector('.error-text');
 
-let arr = [];
+const onInputHandler = e => {
+   const isValid = myForm.reportValidity();
 
-const onChangeHandler = e => {
-   const isValid = e.target.reportValidity();
+   if (isValid) submitBtn.disabled = false;
 
-   if (isValid) arr.push(isValid);
-
-   if (arr.length === 3) submitBtn.disabled = false;
-
-   console.log(arr);
+   errorElem.textContent = '';
 };
 
 const onSubmitHandler = e => {
    e.preventDefault();
 
+   const dataToPost = [...new FormData(myForm)].reduce(
+      (acc, [field, value]) => ({
+         ...acc,
+         [field]: value,
+      }),
+      {},
+   );
+
    fetch(baseUrl, {
       method: 'POST',
       headers: {
-         'Content-Type': 'form/multipart',
+         'Content-Type': 'application/json;charset=utf-8',
       },
-      body: new FormData(myForm),
+      body: JSON.stringify(dataToPost),
    })
-      .catch(() => {
-         errorElem.textContent = 'Failed to create user';
-      })
       .then(responce => responce.json())
-      .then(result => alert(result));
+      .then(result => alert(JSON.stringify(result)))
+      .catch(error => {
+         errorElem.textContent = 'Failed to create user';
+      });
 
    myForm.reset();
-
-   arr = [];
-
-   submitBtn.disabled = true;
 };
 
-[emailElem, textElem, passwordElem].forEach(elem =>
-   elem.addEventListener('change', onChangeHandler),
-);
+[emailElem, textElem, passwordElem].forEach(elem => elem.addEventListener('input', onInputHandler));
 
 myForm.addEventListener('submit', onSubmitHandler);
