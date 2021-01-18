@@ -34,12 +34,13 @@ const onSubmitHandler = e => {
       body: JSON.stringify(dataToPost),
    })
       .then(responce => responce.json())
-      .then(result => alert(JSON.stringify(result)))
+      .then(result => {
+         myForm.reset();
+         alert(JSON.stringify(result));
+      })
       .catch(error => {
          errorElem.textContent = 'Failed to create user';
       });
-
-   myForm.reset();
 };
 
 [emailElem, textElem, passwordElem].forEach(elem => elem.addEventListener('input', onInputHandler));
