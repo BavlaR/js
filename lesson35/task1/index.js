@@ -1,4 +1,5 @@
-window.addEventListener('error', err => {
+/* eslint-disable prefer-arrow-callback */
+window.addEventListener('error', function onUnhandledError(err) {
    console.error('error', err.message);
 });
 
