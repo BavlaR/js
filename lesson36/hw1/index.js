@@ -8,6 +8,4 @@ const getUserBlog = async userId => {
    return promiseValue;
 };
 
-const getUsersBlogs = idArr => Promise.all(idArr.map(oneId => getUserBlog(oneId)));
-
-getUsersBlogs(['facebook', 'google', 'github']).then(res => console.log(res));
+export const getUsersBlogs = idArr => Promise.all(idArr.map(oneId => getUserBlog(oneId)));
